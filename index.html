@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Lock T-Shirts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for Blue Lock theme */
+        body { background-color: #f8f9fa; font-family: Arial, sans-serif; }
+        .hero { background: url('https://via.placeholder.com/1200x400?text=Blue+Lock+Soccer+Action') center/cover; height: 400px; display: flex; align-items: center; justify-content: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .product-card { transition: transform 0.3s; }
+        .product-card:hover { transform: scale(1.05); }
+        .navbar { background-color: #007bff; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Blue Lock Gear</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#products">T-Shirts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cart">Cart (0)</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="text-center">
+            <h1>Gear Up for the Ultimate Soccer Showdown</h1>
+            <p>Blue Lock T-Shirts Now Available!</p>
+            <a href="#products" class="btn btn-light btn-lg">Shop Now</a>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div id="products" class="container my-5">
+        <h2 class="text-center mb-4">Featured T-Shirts</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x300?text=Isagi+Egoist+Tee" class="card-img-top" alt="Isagi Tee">
+                    <div class="card-body">
+                        <h5 class="card-title">Isagi Yoichi Egoist Tee</h5>
+                        <p class="card-text">$25.00</p>
+                        <button class="btn btn-primary add-to-cart" data-product="Isagi Tee">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x300?text=Bachira+Monster+Tee" class="card-img-top" alt="Bachira Tee">
+                    <div class="card-body">
+                        <h5 class="card-title">Bachira Monster Tee</h5>
+                        <p class="card-text">$25.00</p>
+                        <button class="btn btn-primary add-to-cart" data-product="Bachira Tee">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x300?text=Blue+Lock+Team+Tee" class="card-img-top" alt="Team Tee">
+                    <div class="card-body">
+                        <h5 class="card-title">Blue Lock Team Tee</h5>
+                        <p class="card-text">$25.00</p>
+                        <button class="btn btn-primary add-to-cart" data-product="Team Tee">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2023 Blue Lock Gear. Follow us on <a href="#" class="text-light">Instagram</a>.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple cart functionality (stores in localStorage)
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        updateCartDisplay();
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const product = button.getAttribute('data-product');
+                cart.push(product);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+                alert(`${product} added to cart!`);
+            });
+        });
+
+        function updateCartDisplay() {
+            const cartLink = document.querySelector('a[href="#cart"]');
+            cartLink.textContent = `Cart (${cart.length})`;
+        }
+    </script>
+</body>
+</html>
